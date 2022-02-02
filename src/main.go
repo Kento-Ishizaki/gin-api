@@ -3,6 +3,7 @@ package main
 import (
 	"github.com/gin-gonic/gin"
 	"net/http"
+	"go_test/controller"
 )
 
 func main() {
@@ -12,5 +13,7 @@ func main() {
 			"message": "Hello World",
 		})
 	})
+	engine.GET("/posts", controllers.Getting)
+
 	engine.Run(":3000")
 }
