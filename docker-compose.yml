@@ -23,9 +23,12 @@ services:
     hostname: mysql
     ports:
       - 3306:3306
-    env_file:
-      - ./docker/mysql/.env
     command: mysqld --character-set-server=utf8 --collation-server=utf8_unicode_ci --skip-character-set-client-handshake
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: database
+      MYSQL_USER: db_user
+      MYSQL_PASSWORD: db_password
     volumes:
       - "./mysql_data/mysql:/var/lib/mysql"
       - "./docker/mysql/my.conf:/etc/mysql/my.conf"
